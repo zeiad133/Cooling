@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+<div class = "center">
+  <%= image_tag @form.image.url(:large)%>
+
+  <h1><%= @form.propertyType if @form.propertyType != "None"%></h1>
+  <h1><%= @form.header%></h1>
+  <h5> <%= @form.paragraph %></h5>
+
+   
+<%= form_with(model: @form, local: true , html: { multipart: true }) do |form| %>
+ 
+  <div class="field">
+    <%= form.label :Name %>
+    <%= form.text_field :name%>
+  </div>
+  <div class="field">
+    <%= form.label :email if @form.email.chars.length > 0%>
+    <%= form.text_field :email if @form.email.chars.length > 0%>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= form.label :"Best Time To call" if @form.bestTime.chars.length > 0%>
+    <%= form.text_field :bestTime if @form.bestTime.chars.length > 0%>
+  </div>
+  <div class="field">
+    <%= form.label :"Job Title" if @form.jobTitle.chars.length > 0%>
+    <%= form.text_field :jobTitle if @form.jobTitle.chars.length > 0%>
+  </div>
+<%end%>
+
+
+
+
+
+<%= link_to 'Edit', edit_form_path(@form) %> |
+<%= link_to 'Back', forms_path %>
+     </div>
+<style>
+.center {
+  margin: auto;
+  width: 38%;
+  /* border: 1px solid #73AD21; */
+  padding: 10px;
+}
+</style>

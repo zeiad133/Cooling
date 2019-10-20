@@ -1,0 +1,68 @@
+<%= form_with(model: form, local: true , html: { multipart: true }) do |form| %>
+  <% if @form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form.errors.count, "error") %> prohibited this form from being saved:</h2>
+
+      <ul>
+        <% @form.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image%>
+  </div>
+
+  <div class="field">
+    <%= form.label :"Form title" %>
+    <%= form.text_field :title , required: true%>
+  </div>
+    <div class="field">
+    <%= form.label :HeadLine %>
+    <%= form.text_field :header , required: true %>
+  </div>
+  
+
+  <div class="field">
+    <%= form.label :Description %>
+    <%= form.text_area :paragraph , required: true %>
+  </div>
+   <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone , required: true%>
+  </div>
+
+   <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name , required: true%>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+ 
+  <div class="field">
+    <%= form.label :"Best Time To call" %>
+    <%= form.text_field :bestTime %>
+  </div>
+  <div class="field">
+    <%= form.label :"Job Title" %>
+    <%= form.text_field :jobTitle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :"Property Type" %>
+    <%= form.select(:propertyType, ["None" , "Villa" , "Apartment" , "Townhouse" , "Twinhouse"], {}, {class: "form-control"} ) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
